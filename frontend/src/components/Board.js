@@ -23,7 +23,7 @@ const Board = (props) => {
   const [c3, setc3] = useState(null);
   const [cur_var, setcur_var] = useState("X");
   const [count, setcount] = useState(0);
-
+  const [winner, setwinner] = useState(null)
   // checking the winner
   const checkwinner = () => {
     if (
@@ -44,11 +44,11 @@ const Board = (props) => {
       (b1 === "X" && b2 === "X" && b3 === "X") ||
       (b1 === "O" && b2 === "O" && b3 === "O")
     ) {
-      let winner
+      
       if (count % 2 === 0){
-         winner = player2
+          setwinner(player2)
       }else{
-        winner =player1
+        setwinner(player1)
       }
      
       save(winner)
@@ -112,13 +112,14 @@ const Board = (props) => {
     <div>
       <div className="d-flex justify-content-center">
         {" "}
-        <h4>
-          {player1} v/s {player2}
+        <h4 className="m-2">
+          <span style={{"color":"yellow"}}>{player1}</span> v/s <span style={{"color":"green"}}>{player2}</span>
         </h4>
       </div>
-      <h5> Your turn : {count % 2===0?player1:player2}</h5>
+      <h5 className="m-3"> Your turn : {count % 2===0?player1:player2}</h5>
       <div className=" d-flex justify-content-center">
-        <div className="d-flex flex-column">
+        <div className="board">
+        <div style={{"margin-left":"4vw"}} className="d-flex flex-column">
           <div
             className="d-flex justify-content-center square"
             onClick={() => {
@@ -215,6 +216,7 @@ const Board = (props) => {
             {c3}
           </div>
         </div>
+        </div>
 
         {/* winner display modal */}
         <button
@@ -235,8 +237,8 @@ const Board = (props) => {
           <div className="modal-dialog modal-dialog-centered" role="document">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLongTitle">
-                  Modal title
+                <h5 className="modal-title " id="exampleModalLongTitle">
+                 The WINNER is 
                 </h5>
                 <button
                   type="button"
@@ -247,14 +249,17 @@ const Board = (props) => {
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div className="modal-body">...</div>
+              <div className="modal-body d-flex justify-content-center"><h3>{winner}</h3></div>
               <div className="modal-footer">
                 <button
                   type="button"
                   className="btn btn-secondary"
                   data-dismiss="modal"
                 >
-                  Close
+                  <span>Close</span>
+  <svg viewBox="-5 -5 110 110" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"/>
+  </svg>
                 </button>
               </div>
             </div>
@@ -281,7 +286,7 @@ const Board = (props) => {
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">
-                  Modal title
+                  Let's Go.....
                 </h5>
                 <button
                   type="button"
@@ -292,22 +297,27 @@ const Board = (props) => {
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
-                <label htmlFor="">enter name of player 1</label>
-                <input type="text" name="player1" id="player1" />
-                <label htmlFor="">enter name of player 2</label>
-                <input type="text" name="player2" id="player2" />
+              <form action=""><div class="modal-body">
+                <label className="p-2" htmlFor="">Enter the name of player-1</label>
+                <input type="text" name="player1" required id="player1" />
+                <label className="p-2" htmlFor="">Enter the name of player-2</label>
+                <input type="text" name="player2"  required id="player2" />
               </div>
               <div class="modal-footer">
                 <button
-                  type="button"
+                  type="submit"
                   onClick={savename}
                   data-dismiss="modal"
                   class="btn btn-primary "
                 >
-                  Save{" "}
+                  <span>Continue</span>
+  <svg viewBox="-5 -5 110 110" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"/>
+  </svg>{" "}
                 </button>
               </div>
+              </form>
+              
             </div>
           </div>
         </div>
@@ -341,16 +351,16 @@ const Board = (props) => {
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div className="modal-body">
+              <div className="modal-body d-flex justify-content-center">
                 <table>
-                  <tr><td>player - 1</td>
+                  <tr ><td>player - 1</td>
                   <td>player - 2</td>
                   <td>winner</td></tr>
                 {  props.logs.map((ele)=>{
                      return <tr key={ele.status}>
-                      <td>{ele.player1}</td>
-                      <td>{ele.player2}</td>
-                      <td>{ele.status}</td>
+                      <td className="names">{ele.player1}</td>
+                      <td className="names">{ele.player2}</td>
+                      <td className="winner">{ele.status}</td>
                       </tr>
                   })}
                 </table>
@@ -361,7 +371,10 @@ const Board = (props) => {
                   className="btn btn-secondary"
                   data-dismiss="modal"
                 >
-                  Close
+                 <span>close</span>
+  <svg viewBox="-5 -5 110 110" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"/>
+  </svg>
                 </button>
               </div>
             </div>
@@ -371,8 +384,11 @@ const Board = (props) => {
       {/* restart button */}
       <div className="d-flex justify-content-center">
         {" "}
-        <button type="button" onClick={restart} className="btn btn-primary ">
-          restart
+        <button type="button" onClick={restart} style={{"margin-top":"2vh","margin-left":"5px"}} className="btn  ">
+        <span>Restart</span>
+  <svg viewBox="-5 -5 110 110" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"/>
+  </svg>
         </button>
       </div>
     </div>
