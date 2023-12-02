@@ -5,10 +5,11 @@
 A simple tic-tac-toe game which is set in world of one piece..enjoy your childhood again.
 
 --requirements
--express
--mongoose
--cors
-
+<ul>
+-<li>express</li>
+-<li>mongoose</li>
+-<li>cors</li>
+</ul>
 <h1>Getting Started</h1>
 
 <p>To get started with this project, follow the instructions below.</p>
