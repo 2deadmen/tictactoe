@@ -1,8 +1,7 @@
-const mongoose = require('mongoose');
-const mongoURI = "mongodb://localhost:27017/logs"
+const mongoose = require("mongoose");
+const mongoURI = "mongodb://localhost:27017/logs";
 
-const connectToMongo =()=>{
-    mongoose.connect(mongoURI)
-}
-module.exports=connectToMongo;
-
+const connectToMongo = () => {
+  mongoose.connect(mongoURI);
+};
+module.exports = connectToMongo;

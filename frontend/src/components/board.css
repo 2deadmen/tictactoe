@@ -1,49 +1,45 @@
 .board {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4px;
-    max-width: 300px;
-    margin: 0 auto;
-    color: #ca1717;
-    font-weight: 500;
-    
-  }
-  
-  .board-row {
-    display: flex;
-  }
-  
-  .square {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    height:100px;
-    width: 100px;
-    background-image: url('../assets/luffy.jpg');
-    
-    border: 3px solid #ca1717;
-    cursor: pointer;
-  }
-  .square:hover{
-   
-    font-size: 2.5rem;
-    height:100px;
-    width: 100px;
-    
-    border: 5px solid #ca1717;
-   
-  }
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  max-width: 300px;
+  margin: 0 auto;
+  color: #ca1717;
+  font-weight: 500;
+}
 
-  td{
-    padding-left: 2vw ;
-    padding-right: 1vw;
-    border: solid 1px;
-   
-  }
-  .names{
-    background-color: rgb(244, 239, 208);
-  }
-  .winner{
-    background-color: rgb(197, 239, 225);
-  }
+.board-row {
+  display: flex;
+}
+
+.square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  height: 100px;
+  width: 100px;
+  background-image: url("../assets/luffy.jpg");
+
+  border: 3px solid #ca1717;
+  cursor: pointer;
+}
+.square:hover {
+  font-size: 2.5rem;
+  height: 100px;
+  width: 100px;
+
+  border: 5px solid #ca1717;
+}
+
+td {
+  padding-left: 2vw;
+  padding-right: 1vw;
+  border: solid 1px;
+}
+.names {
+  background-color: rgb(244, 239, 208);
+}
+.winner {
+  background-color: rgb(197, 239, 225);
+}
