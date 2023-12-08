@@ -3,8 +3,20 @@ import "./board.css";
 
 const Board = (props) => {
   useEffect(() => {
+    
     namebuttonRef.current.click();
+    
   }, []);
+  const [count, setcount] = useState(0);
+  useEffect(() => {
+    
+    checkwinner();
+    
+  }, [count]);
+  
+ 
+
+
   //button refs
   const namebuttonRef = useRef(null);
   const winnerbuttonRef = useRef(null);
@@ -22,10 +34,12 @@ const Board = (props) => {
   const [c2, setc2] = useState(null);
   const [c3, setc3] = useState(null);
   const [cur_var, setcur_var] = useState("X");
-  const [count, setcount] = useState(0);
+
   const [winner, setwinner] = useState(null);
   // checking the winner
+  
   const checkwinner = () => {
+   
     if (
       (a1 === "X" && a2 === "X" && a3 === "X") ||
       (a1 === "O" && a2 === "O" && a3 === "O") ||
@@ -51,12 +65,17 @@ const Board = (props) => {
       }
 
       save(winner);
+      
+      
+    
       winnerbuttonRef.current.click();
+      // winnerbuttonRef.current.click();
       return true;
     } else {
       return false;
     }
   };
+
 
   //sending it to server
   const save = async (winner) => {
@@ -81,6 +100,7 @@ const Board = (props) => {
   //restart game
   const restart = () => {
     window.location.reload();
+    
   };
   //save names
   const savename = () => {
@@ -90,17 +110,24 @@ const Board = (props) => {
 
   //set values to squares
   const setvar = (pos_var) => {
-    if (!checkwinner() && pos_var === null && count < 9) {
+    if ( !checkwinner() && pos_var === null && count < 9) {
+      
       let temp = count;
+      
       setcount(temp + 1);
-
-      if (count % 2 === 0) {
+      
+      if (temp % 2 === 0) {
         setcur_var("O");
+       
       } else {
         setcur_var("X");
+     
       }
-
-      return true;
+     
+      
+      return true
+      
+   
     } else {
       return false;
     }
@@ -125,9 +152,12 @@ const Board = (props) => {
           <div style={{ "margin-left": "4vw" }} className="d-flex flex-column">
             <div
               className="d-flex justify-content-center square"
-              onClick={() => {
+              
+              onClick={ () => {
                 if (setvar(a1)) {
-                  seta1(cur_var);
+                  seta1(cur_var)
+                  
+                   
                 }
               }}
             >
@@ -138,6 +168,7 @@ const Board = (props) => {
               onClick={() => {
                 if (setvar(a2)) {
                   seta2(cur_var);
+                 
                 }
               }}
             >
@@ -223,6 +254,7 @@ const Board = (props) => {
 
         {/* winner display modal */}
         <button
+          id="winnerbutton"
           type="button"
           ref={winnerbuttonRef}
           className="btn btn-primary invisible"
